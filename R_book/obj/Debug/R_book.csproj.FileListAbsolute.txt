@@ -1,0 +1,14 @@
+F:\VS\R_book\bin\Debug\R_book.exe.config
+F:\VS\R_book\bin\Debug\R_book.exe
+F:\VS\R_book\bin\Debug\R_book.pdb
+F:\VS\R_book\bin\Debug\CSkin.dll
+F:\VS\R_book\bin\Debug\CSkin.xml
+F:\VS\R_book\obj\Debug\R_book.csprojAssemblyReference.cache
+F:\VS\R_book\obj\Debug\R_book.Properties.Resources.resources
+F:\VS\R_book\obj\Debug\R_book.csproj.GenerateResource.cache
+F:\VS\R_book\obj\Debug\R_book.csproj.CoreCompileInputs.cache
+F:\VS\R_book\obj\Debug\R_book.csproj.CopyComplete
+F:\VS\R_book\obj\Debug\R_book.exe
+F:\VS\R_book\obj\Debug\R_book.pdb
+F:\VS\R_book\obj\Debug\R_book.Resource.resources
+F:\VS\R_book\obj\Debug\R_book.book_Mian.resources
