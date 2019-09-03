@@ -12,3 +12,15 @@ F:\VS\R_book\obj\Debug\R_book.exe
 F:\VS\R_book\obj\Debug\R_book.pdb
 F:\VS\R_book\obj\Debug\R_book.Resource.resources
 F:\VS\R_book\obj\Debug\R_book.book_Mian.resources
+E:\VS\R_Book\R_book\bin\Debug\R_book.exe.config
+E:\VS\R_Book\R_book\bin\Debug\R_book.exe
+E:\VS\R_Book\R_book\bin\Debug\R_book.pdb
+E:\VS\R_Book\R_book\obj\Debug\R_book.csprojAssemblyReference.cache
+E:\VS\R_Book\R_book\obj\Debug\R_book.book_Mian.resources
+E:\VS\R_Book\R_book\obj\Debug\R_book.Properties.Resources.resources
+E:\VS\R_Book\R_book\obj\Debug\R_book.Resource.resources
+E:\VS\R_Book\R_book\obj\Debug\R_book.csproj.GenerateResource.cache
+E:\VS\R_Book\R_book\obj\Debug\R_book.csproj.CoreCompileInputs.cache
+E:\VS\R_Book\R_book\obj\Debug\R_book.csproj.CopyComplete
+E:\VS\R_Book\R_book\obj\Debug\R_book.exe
+E:\VS\R_Book\R_book\obj\Debug\R_book.pdb

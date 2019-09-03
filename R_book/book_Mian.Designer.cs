@@ -55,11 +55,13 @@
             this.ssButton = new CCWin.SkinControl.SkinButton();
             this.ss_textBox = new System.Windows.Forms.TextBox();
             this.sslistbox = new CCWin.SkinControl.SkinListBox();
+            this.gxbooklistBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.skinTabControl1.SuspendLayout();
             this.tjTab.SuspendLayout();
             this.jpTab.SuspendLayout();
             this.gxTab.SuspendLayout();
             this.ssTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gxbooklistBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList
@@ -206,6 +208,7 @@
             // mululistBox
             // 
             this.mululistBox.FormattingEnabled = true;
+            this.mululistBox.HorizontalScrollbar = true;
             this.mululistBox.ItemHeight = 12;
             this.mululistBox.Location = new System.Drawing.Point(317, 59);
             this.mululistBox.Name = "mululistBox";
@@ -335,6 +338,7 @@
             this.xqbutton.Size = new System.Drawing.Size(24, 24);
             this.xqbutton.TabIndex = 4;
             this.xqbutton.UseVisualStyleBackColor = false;
+            this.xqbutton.Click += new System.EventHandler(this.xqbutton_Click);
             // 
             // xhbutton
             // 
@@ -351,6 +355,7 @@
             this.xhbutton.Size = new System.Drawing.Size(24, 24);
             this.xhbutton.TabIndex = 3;
             this.xhbutton.UseVisualStyleBackColor = false;
+            this.xhbutton.Click += new System.EventHandler(this.xhbutton_Click);
             // 
             // gxlistbox
             // 
@@ -434,11 +439,15 @@
             this.sslistbox.Size = new System.Drawing.Size(281, 329);
             this.sslistbox.TabIndex = 3;
             // 
+            // gxbooklistBindingSource
+            // 
+            this.gxbooklistBindingSource.DataSource = typeof(gxbooklist);
+            // 
             // book_Mian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 700);
+            this.ClientSize = new System.Drawing.Size(1127, 672);
             this.Controls.Add(this.mululistBox);
             this.Controls.Add(this.xz_text);
             this.Controls.Add(this.wc);
@@ -459,6 +468,7 @@
             this.gxTab.PerformLayout();
             this.ssTab.ResumeLayout(false);
             this.ssTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gxbooklistBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,6 +501,7 @@
         private CCWin.SkinControl.SkinButton xqbutton;
         private CCWin.SkinControl.SkinButton xhbutton;
         private System.Windows.Forms.Label pagelabel;
+        private System.Windows.Forms.BindingSource gxbooklistBindingSource;
     }
 }
 

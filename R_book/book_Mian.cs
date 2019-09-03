@@ -79,14 +79,7 @@ namespace R_book
                     lbei.Image = image;
                     jplistbox.Items.Add(lbei);
                 }
-                foreach (string bn in bookmllist_gx)
-                {
-                    SkinListBoxItem lbei = new SkinListBoxItem();
-                    lbei.Text = " " + bn;
-                    Image image = Resource.book;
-                    lbei.Image = image;
-                    gxlistbox.Items.Add(lbei);
-                }
+             
                 
             }
             else
@@ -132,16 +125,20 @@ namespace R_book
                 blog_jp.Add(jpt);
             }
             gxlistload(s[2]);
-            string pagetext = s[2].Split(new string[] { "</em>" }, StringSplitOptions.None).ToList()[1];
+           // pagelabel.Text = s[2];
+            string pagetext = s[2].Split(new string[] { "<em id=\"pagestats\">", "</em>" }, StringSplitOptions.None).ToList()[1];
             string[] paget = pagetext.Split('/');
             pagecount = int.Parse(paget[1]);
             page = int.Parse(paget[0]);
+            pagelabel.Text = "第" + page + "页 共" + pagecount + "页";
+
         }
 
         private void gxlistload(string gxtext)
         {
-            //string[] page = pagetext.Split('/');
-            pagelabel.Text = pagetext;
+            blog_gx.Clear();
+            bookmllist_gx.Clear();
+            gxlistbox.Items.Clear();
             int gxul = gxtext.IndexOf("</ul>");
             if (gxul > 0)
             {
@@ -162,6 +159,14 @@ namespace R_book
                 gxt.url = hl[1];
                 bookmllist_gx.Add(hl[2]);
                 blog_gx.Add(gxt);
+            }
+            foreach (string bn in bookmllist_gx)
+            {
+                SkinListBoxItem lbei = new SkinListBoxItem();
+                lbei.Text = " " + bn;
+                Image image = Resource.book;
+                lbei.Image = image;
+                gxlistbox.Items.Add(lbei);
             }
         }
 
@@ -362,8 +367,36 @@ namespace R_book
             }
             TextBox.Text = getpagetxt(blog_mllist[index].url);
         }
+        bool loading = false;
+        private void xqbutton_Click(object sender, EventArgs e)
+        {
+            if (loading|| page == 1)
+            {
+                return;
+            }
+            loading = true;
+            page--;
+            string nexurl = "http://www.xiaoqiangxs.org/lawenxiaoshuo/5_" + page + ".html";
+            List<string> s = geturl(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
+            gxlistload(s[2]);
+            pagelabel.Text = "第" + page + "页 共" + pagecount + "页";
+            loading = false;
+        }
 
-
+        private void xhbutton_Click(object sender, EventArgs e)
+        {
+            if (loading || page == pagecount)
+            {
+                return;
+            }
+            loading = true;
+            page++;
+            string nexurl = "http://www.xiaoqiangxs.org/lawenxiaoshuo/5_" + page + ".html";
+            List<string> s = geturl(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
+            gxlistload(s[2]);
+            pagelabel.Text = "第" + page + "页 共" + pagecount + "页";
+            loading = false;
+        }
         /// <summary>
         /// 数字转中文
         /// </summary>
@@ -433,6 +466,7 @@ namespace R_book
             }
             return res;
         }
+
     }
 }
 class booklog
@@ -440,4 +474,23 @@ class booklog
     public string name { get; set; }
     public string url { get; set; }
     public string type { get; set; }
+}
+
+class booklistbox
+{
+    public string Text { get; set; }
+    public string Image { get; set; }
+}
+
+class tjbooklist
+{
+    public List<booklistbox> tj { get; set; }
+}
+class jpbooklist
+{
+    public List<booklistbox> tj { get; set; }
+}
+class gxbooklist
+{
+    public List<booklistbox> tj { get; set; }
 }
