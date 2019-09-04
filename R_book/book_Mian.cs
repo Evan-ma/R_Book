@@ -38,26 +38,12 @@ namespace R_book
         string url = "http://www.xiaoqiangxs.org";
 
         public string bookmlurl = "http://www.xiaoqiangxs.org/lawenxiaoshuo/";
-        public string geturl(string srl)
-        {
-            try
-            {
-                WebClient MyWebClient = new WebClient();
-                //获取或设置用于向Internet资源的请求进行身份验证的网络凭据
-                MyWebClient.Credentials = CredentialCache.DefaultCredentials;
-                Byte[] pageData = MyWebClient.DownloadData(srl); //从指定网站下载数据
-                return Encoding.Default.GetString(pageData);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("网站已变动");
-                return "";
-            }
-        }
+
+        WebToStream WTS = new WebToStream();
 
         private void GetTXT_Load(object sender, EventArgs e)
         {
-            string blist = geturl(bookmlurl);
+            string blist = WTS.getWebData(bookmlurl);
           //  TextBox.Text = blist;
             if (blist != "")
             {
@@ -175,7 +161,7 @@ namespace R_book
             bookmllist.Clear();
             mululistBox.Items.Clear();
             blog_mllist.Clear();
-            string mltext = geturl(bookurl);
+            string mltext = WTS.getWebData(bookurl);
             List<string> mlhl = mltext.Split(new[] { "<dl>", "</dl>" }, StringSplitOptions.None).ToList();
             mltext = mlhl[1].Replace(" ", "");
             List<string> tjlist = mltext.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
@@ -239,7 +225,7 @@ namespace R_book
         public string getpagetxt(string burl)
         {
             string txturl = url + burl;
-            string pageHtml = geturl(txturl);
+            string pageHtml = WTS.getWebData(txturl);
             string start = "<div id=\"content\">";
             string end = "<div class=\"bottem2\">";
             var startIndex = pageHtml.IndexOf(start);
@@ -327,7 +313,7 @@ namespace R_book
             blog_mllist.Clear();
             try
             {
-                mltext = geturl("http://www.xiaoqiangxs.org/" + ss_textBox.Text + "/");
+                mltext = WTS.getWebData("http://www.xiaoqiangxs.org/" + ss_textBox.Text + "/");
 
             }
             catch (Exception ex)
@@ -377,7 +363,7 @@ namespace R_book
             loading = true;
             page--;
             string nexurl = "http://www.xiaoqiangxs.org/lawenxiaoshuo/5_" + page + ".html";
-            List<string> s = geturl(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
+            List<string> s = WTS.getWebData(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
             gxlistload(s[2]);
             pagelabel.Text = "第" + page + "页 共" + pagecount + "页";
             loading = false;
@@ -392,7 +378,7 @@ namespace R_book
             loading = true;
             page++;
             string nexurl = "http://www.xiaoqiangxs.org/lawenxiaoshuo/5_" + page + ".html";
-            List<string> s = geturl(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
+            List<string> s = WTS.getWebData(nexurl).Split(new[] { "<div id=\"hotcontent\">", "<div id=\"newscontent\">", "<h2>好看的精品小说</h2>", "<div class=\"page_b page_b2\">喜欢就收藏我们</div>" }, StringSplitOptions.None).ToList();
             gxlistload(s[2]);
             pagelabel.Text = "第" + page + "页 共" + pagecount + "页";
             loading = false;
